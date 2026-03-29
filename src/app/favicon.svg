@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&display=swap');
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="32" height="32" rx="7" fill="#0a0a0a"/>
+
+  <!-- Actual Playfair Display italic R -->
+  <text
+    x="5"
+    y="27"
+    font-family="'Playfair Display', Georgia, serif"
+    font-style="italic"
+    font-weight="700"
+    font-size="26"
+    fill="#ffffff"
+  >R</text>
+
+  <!-- Accent dot -->
+  <circle cx="27" cy="5" r="3.5" fill="#c8f564"/>
+</svg>

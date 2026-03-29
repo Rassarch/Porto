@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Playfair+Display:ital,wght@1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+:root {
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
 
 * {
   box-sizing: border-box;
@@ -15,8 +23,7 @@ html {
 body {
   background-color: #080808;
   color: #e6e3dd;
-  /* Tambahkan fallback sans-serif agar lebih aman */
-  font-family: var(--font-body), sans-serif; 
+  font-family: var(--font-body);
   overflow-x: hidden;
 }
 
@@ -42,7 +49,7 @@ body::before {
 ::selection { background: #c8f564; color: #080808; }
 
 /* Utility classes */
-.font-display { font-family: var(--font-display), sans-serif; }
+.font-display { font-family: var(--font-display); }
 
 /* Marquee animation */
 @keyframes marquee {

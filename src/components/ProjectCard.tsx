@@ -1,7 +1,9 @@
 "use client";
 
-import { ArrowUpRight } from "@phosphor-icons/react";
+import { ArrowUpRight, PlayCircle } from "@phosphor-icons/react";
 import { motion } from "motion/react";
+import Image from "next/image";
+import { useState } from "react";
 
 interface ProjectCardProps {
   num: string;
@@ -14,6 +16,7 @@ interface ProjectCardProps {
   accent: string;
   reverse?: boolean;
   index: number;
+  imageId: string; // Properti baru untuk nama file gambar
 }
 
 export default function ProjectCard({
@@ -27,7 +30,11 @@ export default function ProjectCard({
   accent,
   reverse = false,
   index,
+  imageId,
 }: ProjectCardProps) {
+  // State pengendali Iframe
+  const [loadIframe, setLoadIframe] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 32 }}
@@ -45,7 +52,7 @@ export default function ProjectCard({
           reverse ? "md:[direction:rtl]" : ""
         }`}
       >
-        {/* Info */}
+        {/* === INFO (BAGIAN KIRI) === */}
         <div
           className={`p-8 md:p-12 flex flex-col justify-between ${
             reverse ? "md:[direction:ltr]" : ""
@@ -132,47 +139,86 @@ export default function ProjectCard({
           </div>
         </div>
 
-        {/* Visual — iframe preview, lazy loaded */}
+        {/* === VISUAL (BAGIAN KANAN - HYBRID MODE) === */}
         <div
-          className={`relative overflow-hidden bg-bg min-h-[260px] md:min-h-[380px] ${
+          className={`relative overflow-hidden bg-[#080808] min-h-[260px] md:min-h-[380px] cursor-pointer group/preview ${
             reverse ? "md:[direction:ltr]" : ""
           }`}
+          onMouseEnter={() => setLoadIframe(true)}
+          onClick={() => setLoadIframe(true)}
         >
-          {/* Gradient overlay */}
+          {/* Gradient overlay statis */}
           <div
-            className="absolute inset-0 z-10 pointer-events-none"
+            className="absolute inset-0 z-20 pointer-events-none"
             style={{
               background:
-                "linear-gradient(135deg, rgba(8,8,8,0.15) 0%, transparent 50%, rgba(8,8,8,0.3) 100%)",
+                "linear-gradient(135deg, rgba(8,8,8,0.2) 0%, transparent 50%, rgba(8,8,8,0.5) 100%)",
             }}
           />
-          {/* Top accent line */}
+          {/* Garis aksen atas */}
           <div
-            className="absolute top-0 left-0 right-0 h-[2px] z-20"
+            className="absolute top-0 left-0 right-0 h-[2px] z-30"
             style={{ background: accent, opacity: 0.6 }}
           />
-          {/* Iframe preview */}
-          <iframe
-            src={url}
-            title={`Preview ${title}`}
-            loading="lazy"
-            scrolling="no"
-            tabIndex={-1}
-            aria-hidden="true"
-            className="absolute top-0 left-0 border-none pointer-events-none"
-            style={{
-              width: "200%",
-              height: "200%",
-              transform: "scale(0.5)",
-              transformOrigin: "top left",
-            }}
-          />
-          {/* Fallback label */}
+
+          {/* STATE 1: SEBELUM DI-HOVER (GAMBAR STATIS) */}
+          {!loadIframe && (
+            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center">
+              {/* Gambar Background (Sangat ringan di-load) */}
+              <Image
+                src={`/images/${imageId}.webp`}
+                alt={`Preview statis ${title}`}
+                fill
+                className="object-cover object-top opacity-40 group-hover/preview:opacity-20 transition-opacity duration-300"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority={index === 0} // Prioritaskan gambar pertama agar LCP makin kencang
+              />
+              {/* Ikon Play Interactive */}
+              <div className="z-30 flex flex-col items-center gap-3 text-white opacity-80 group-hover/preview:opacity-100 group-hover/preview:scale-110 transition-all duration-300">
+                <PlayCircle size={48} weight="light" color={accent} className="animate-pulse" />
+                <span className="text-[10px] font-mono tracking-widest uppercase" style={{ color: accent }}>
+                  Tap to Load Interactive
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* STATE 2: SETELAH DI-HOVER (IFRAME HIDUP) */}
+          {loadIframe && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8 }}
+              className="absolute inset-0 z-0"
+            >
+              <iframe
+                src={url}
+                title={`Preview ${title}`}
+                loading="eager"
+                scrolling="no"
+                tabIndex={-1}
+                aria-hidden="true"
+                className="absolute top-0 left-0 border-none pointer-events-none"
+                style={{
+                  width: "200%",
+                  height: "200%",
+                  transform: "scale(0.5)",
+                  transformOrigin: "top left",
+                }}
+              />
+            </motion.div>
+          )}
+
+          {/* Label Status di Kanan Bawah */}
           <div
-            className="absolute bottom-4 right-4 z-20 text-[11px] uppercase tracking-widest px-3 py-1 rounded-full border"
-            style={{ color: accent, borderColor: `${accent}44`, background: "rgba(8,8,8,0.8)" }}
+            className="absolute bottom-4 right-4 z-30 text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full border transition-colors duration-300"
+            style={{
+              color: loadIframe ? accent : "#888",
+              borderColor: loadIframe ? `${accent}55` : "#333",
+              background: "rgba(8,8,8,0.85)",
+            }}
           >
-            Live Preview
+            {loadIframe ? "Live Preview Active" : "Static Image"}
           </div>
         </div>
       </div>

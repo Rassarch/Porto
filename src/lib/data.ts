@@ -10,6 +10,7 @@ export const PROJECTS = [
     id: "skylift",
     num: "01",
     title: "Skylift",
+    imageId: "skylift",
     category: "Fitness Center · Company Profile",
     problem:
       "Gym premium di Kota Metro yang butuh tampilan digital sekuat fasilitasnya — membangun kepercayaan calon member sebelum mereka masuk pintu.",
@@ -23,6 +24,7 @@ export const PROJECTS = [
     id: "ontrip",
     num: "02",
     title: "Ontrip",
+    imageId: "ontrip",
     category: "Tour & Travel · B2B Platform",
     problem:
       "Biro perjalanan wisata yang menyasar sekolah dan instansi — butuh tampilan yang elegan dan terpercaya, bukan seperti travel biasa.",
@@ -36,6 +38,7 @@ export const PROJECTS = [
     id: "griyakost",
     num: "03",
     title: "Griya Kost",
+    imageId: "griyakost",
     category: "Properti · Booking Platform",
     problem:
       "Kost modern di Kota Metro yang ingin mempermudah calon penghuni melihat kamar dan booking tanpa harus datang langsung.",
@@ -49,6 +52,7 @@ export const PROJECTS = [
     id: "campanella",
     num: "04",
     title: "Campanella",
+    imageId: "campanella",
     category: "F&B · Coffee Shop",
     problem:
       "Coffee shop dengan 3 zona unik (indoor, outdoor sawah, rooftop) yang ingin menyampaikan vibe-nya secara digital dan mempermudah reservasi.",
@@ -92,7 +96,14 @@ export const SKILLS = [
   "Vercel", "SEO On-Page", "Figma", "Git",
 ];
 
-export const PROCESS = [
+type ProcessItem = {
+  num: string;
+  title: string;
+  desc: string;
+  icon?: string; 
+};
+
+export const PROCESS: ProcessItem[] = [
   {
     num: "01",
     title: "Diskusi",
@@ -110,7 +121,8 @@ export const PROCESS = [
   },
   {
     num: "04",
-    title: "Launch 🚀",
+    title: "Launch",
+    icon: "RocketLaunch",
     desc: "Website live! Aku bantu deploy, setup domain, dan pastikan semuanya berjalan sempurna.",
   },
 ];

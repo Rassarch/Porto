@@ -33,7 +33,7 @@ export default function Footer() {
         </span>
       </a>
       <span className="text-[13px] text-muted">
-        © 2025 · Metro, Lampung · Dibuat dengan ☕ dan banyak commit
+        © 2026 · Metro, Lampung · Rassya Rifqi
       </span>
     </footer>
   );

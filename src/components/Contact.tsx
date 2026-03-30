@@ -48,7 +48,7 @@ export default function Contact() {
               <EnvelopeSimple size={16} />
               Email
             </a>
-            <a
+            {/* <a
               href={CONTACT.linkedin}
               target="_blank"
               rel="noopener noreferrer"
@@ -56,7 +56,7 @@ export default function Contact() {
             >
               <LinkedinLogo size={16} />
               LinkedIn
-            </a>
+            </a> */}
           </div>
         </FadeUp>
       </div>

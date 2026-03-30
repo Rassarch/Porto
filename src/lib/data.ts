@@ -1,8 +1,8 @@
 export const CONTACT = {
-  wa: "6289580147121",
+  wa: "62895801471212",
   waText: "Halo+Rassya!+Saya+tertarik+untuk+membuat+website.",
-  email: "rassya@email.com", // ganti
-  linkedin: "https://linkedin.com/in/rassya-rifqi", // ganti
+  email: "rrassya404@gmail.com",
+  linkedin: "https://linkedin.com/in/rassya-rifqi",
 };
 
 export const PROJECTS = [

@@ -42,24 +42,22 @@ export default function About() {
           <div className="space-y-5 text-[15px] text-muted font-light leading-relaxed">
             <p>
               Saya web developer dari{" "}
-              <strong className="text-text font-medium">Metro, Lampung</strong>{" "}
+              <strong className="text-white font-medium">Metro, Lampung</strong>{" "}
               yang fokus bikin website buat bisnis lokal dan UMKM. Mulai serius
               terjun ke dunia web karena satu alasan sederhana:{" "}
-              <strong className="text-text font-medium">
+              <strong className="text-white font-medium">
                 banyak bisnis bagus di sekitar saya yang belum punya tampilan
                 digital yang layak.
               </strong>
             </p>
             <p>
-              Saya otodidak — belajar dari nol, ngulik sendiri, dan hasilnya
-              bisa kamu lihat di 4 project di atas. Dari gym premium, travel
-              agent, kost-kostan, sampai coffee shop.
+              Berbekal ilmu Rekayasa Perangkat Lunak (RPL) dan kebiasaan <em className="italic">ngulik</em> teknologi modern secara mandiri, saya fokus mengubah baris kode menjadi solusi yang fungsional. Hasil eksekusinya bisa kamu lihat di 4 project di atas — dari gym premium, travel agent, bisnis kost-kostan, sampai coffee shop.
             </p>
             <p>
-              Saya percaya website yang bagus bukan soal kerennya aja — tapi
+              Saya percaya website yang bagus bukan cuma soal visual yang keren — tapi
               soal{" "}
-              <strong className="text-text font-medium">
-                apakah dia beneran membantu bisnis kamu berkembang.
+              <strong className="text-white font-medium">
+                apakah dia beneran bisa ngebantu bisnis kamu makin berkembang.
               </strong>
             </p>
           </div>

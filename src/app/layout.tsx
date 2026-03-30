@@ -1,7 +1,9 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://rassyarifqi.vercel.app"),
   title: "Rassya Rifqi — Web Developer Metro, Lampung",
   description:
     "Jasa pembuatan website modern, cepat, dan responsif untuk UMKM dan bisnis lokal. Berbasis di Metro, Lampung. Dibangun dengan Next.js & Tailwind CSS.",
@@ -14,12 +16,24 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Rassya Rifqi" }],
   creator: "Rassya Rifqi",
+  alternates: {
+    canonical: "/", // = https://rassyarifqi.vercel.app/
+  },
   openGraph: {
     title: "Rassya Rifqi — Web Developer Metro, Lampung",
-    description:
-      "Website modern, cepat, dan responsif untuk bisnis lokal Anda.",
+    description: "Website modern, cepat, dan responsif untuk bisnis lokal Anda.",
     type: "website",
     locale: "id_ID",
+    url: "https://rassyarifqi.vercel.app",
+    siteName: "Rassya Rifqi Portfolio",
+    images: ["/og-image.png"], // bikin file ini di /public
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rassya Rifqi — Web Developer Metro, Lampung",
+    description:
+      "Jasa pembuatan website modern untuk UMKM dan bisnis lokal di Metro, Lampung.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
